@@ -166,9 +166,8 @@ In what way are Bayesian Networks related to these three pillars of Bayesian met
 What is required to treat uncertainty when BNs are used for ecological risk assessment?
 
 ###Proposition
-<!-- Comment by dmi3kno on 2020-11-02 12:53 
 Statistical models which explicitly address structural uncertainty can support uncertainty analysis in ERA. BNs do not handle structural uncertainty by default, unless they are "wrapped" into the hierarchical model (Enhanced BNs). 
--->
+
 Statistical models which quantify uncertainty in parameters can support uncertainty analysis of BNs  [needs reformulation]
 ---
 # Hierarchical models
@@ -178,9 +177,7 @@ What is a HM
 What is a BHM
 
 Demo using brms. Compared to a frequentist specification side by side.
-<!-- Comment by dmi3kno on 2020-11-02 12:53 
-I thik jags would be overwhelming
--->
+
 ---
 # Bayesian networks
 <!-- Comment by dmi3kno on 2020-11-02 12:53 
@@ -254,6 +251,7 @@ Use epistemic BN to reason using parameters informed by evidence synthesis set u
 # Thanks!
 
 'ullrika.sahlin@cec.lu.se'
+
 
 Slides are available at https://github.com/lu-unevil/BHMnBN
 
