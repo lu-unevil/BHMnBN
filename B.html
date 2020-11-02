@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Both begin with a B - Bayesian networks or Bayesian hierarchical modelling for ecological risk assessment</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Ullrika Sahlin and Dmytro Perepolkin" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Both begin with a B - Bayesian networks or Bayesian hierarchical modelling for ecological risk assessment
+## SETAC North America 2020
+### Ullrika Sahlin and Dmytro Perepolkin
+### Lund University, Sweden
+### 2020/11/19 (updated: 2020-11-02)
+
+---
+
+
+
+
+
+---
+class: left, middle
+
+# Abstract
+An ecological risk assessment is about integrating sources of evidence with expert knowledge to assess severity of impacts or likelihood of adverse events. An important task in risk assessment is to evaluate the impact of limitations in knowledge on epistemic uncertainty in the assessment. The Bayesian paradigm contains several pillars: Bayes rule for inference, subjective probability to quantify uncertainty and a rule for Bayes optimal decisions. These can, but don’t have to be used together to assess risk. Depending on the nature of the risk assessment, probabilistic reasoning applies on variables (aleatory uncertainty) or on models (or parameters within models) (epistemic uncertainty). Bayesian hierarchical models can consider both aleatory and epistemic uncertainty with statistical and predictive rigor, but at the loss of computational speed as the model become more complex. In this talk, I will clarify the distinction between Bayesian networks and Bayesian hierarchical modelling, and show the usefulness and limitations of both approaches. I conclude my talk by proposing a way forward, where both Bayesian networks and Bayesian hierarchical modelling are used for ecological risk assessment. 
+
+---
+class: inverse, middle, center
+.pull-left[
+![scale = 50%](figs/ingemar.png)
+]
+.pull-right[
+"Uncertainty is an uncomfortable position. But certainty is an absurd one."
+Voltaire 1694 - 1778
+]
+---
+# Uncertainty in risk assessment
+
+- Uncertainty arise from limitations in knowledge
+
+- Someone is uncertain
+
+---
+# Uncertainty in risk assessment
+
+- Uncertainty arise from limitations in knowledge
+
+- Someone is uncertain
+
+.pull-left[
+### Epistemic uncertainty
+![scale = 50%](figs/epi.gif)
+]
+
+---
+
+# Uncertainty in risk assessment
+
+- Uncertainty arise from limitations in knowledge
+
+- Someone is uncertain
+
+.pull-left[
+### Epistemic uncertainty
+![scale = 50%](figs/epi.gif)
+]
+.pull-right[
+### Aleatory uncertainty
+![scale = 50%](figs/ale.gif)
+]
+---
+# Uncertainty in risk assessment
+
+- Uncertainty arise from limitations in knowledge
+
+- Someone is uncertain
+
+- Epistemic uncertainty: uncertainty about the model (including parameters), lack of scientific consensus, small sample sizes, bias or low quality in experimental studies, observation or measurement errors, ambiguous terms, misunderstandings
+
+- Aleatory uncertainty: inherent randomness in real world systems, heterogeneity, variability, between study variability, chance outcomes
+
+- Ontological uncertainty
+
+---
+
+class: inverse, middle, center
+# Tuxedo fallacy
+.pull-left[
+"Treating all decisions as if they took place under epistemic conditions analogous to gambling at the roulette table."
+
+Hansson, S.O. (2009). From the casino to the jungle. Synthese
+]
+.pull-right[
+![scale = 50%](figs/Casino-lede-01-1-1300x863.jpg)
+]
+---
+# Communicate uncertainty
+- Communicating uncertainty to decision makers is important
+
+"Unless uncertainty is known
+a decision maker can place too much confidence in experts and face unexpected problems
+or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted
+
+In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"
+
+Fischhoff and Davis (2014). Communicating scientific uncertainty. PNAS
+
+- Uncertainty analysis is an integral part of risk assessment 
+
+Benford et al (2018). The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
+
+SAPEA 2019:7. Scientific Advice to European Policy in a Complex World
+Institute of Medicine 
+
+
+---
+# Expressing epistemic uncertainty
+
+###Direct uncertainty (about facts, numbers and scientific models)
+-Verbal statements
+
+-Intervals
+
+-Probability
+
+.footnote[Reference: Van der Bles et al 2019]
+---
+# Expressing epistemic uncertainty
+###Direct uncertainty (about facts, numbers and scientific models)
+-Verbal statements
+
+-Intervals
+
+-Probability
+
+###Indirect uncertainty (strength in knowledge)
+-List of caveats
+
+-Judged error or risk of different biases
+
+
+.footnote[Reference: Van der Bles et al 2019]
+---
+# Expressing epistemic uncertainty
+###Direct uncertainty (about facts, numbers and scientific models)
+-Verbal statements
+
+-Intervals
+
+-Probability - a precise way to express epistemic uncertainty (make bold)
+
+###Indirect uncertainty (strength in knowledge)
+-List of caveats
+
+-Judged error or risk of different biases
+
+
+.footnote[Reference: Van der Bles et al 2019]
+---
+# Bayesian methods
+.pull-left[
+
+1. Subjective probability to quantify uncertainty
+
+2. Bayes rule for inference
+
+3. Rule for Bayes optimal decisions
+]
+
+.pull-right[
+P(A|background knowledge)
+
+ $$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
+
+$$ d* = \min_{d \in D} P(A|E &amp; D) $$
+]
+
+These can, but don’t have to be used together to assess risk. 
+
+In what way are Bayesian Networks related to these three pillars of Bayesian methods?
+
+What is required to treat uncertainty when BNs are used for ecological risk assessment?
+
+###Proposition
+Statistical models which quantify uncertainty in parameters can support uncertainty analysis of BNs  [needs reformulation]
+---
+# Hierarchical models
+
+What is a HM
+
+What is a BHM
+
+Demo using brms or jags
+
+---
+# Bayesian networks
+###Epistemic BN
+Epistemic BNs are expert-informed networks used for probabilistic reasoning in light of the evidence brought into the network. 
+
+Node state probabilities (other than nodes for data) are subjective probabilities that express epistemic uncertainty
+
+###Aleatory BN
+Node state probabilities are relative frequencies that express aleatory uncertainty (variability)
+
+An aleatory BN is a model for aleatory uncertainty in probabilistic risk assessments.
+
+###Predictive BN
+
+A predictive BN is a BN where the probability distribution for the assessment variable nodes represents a mixture of uncertainty and variability about a future sampling event. 
+
+Node state probabilities are a ‘predictive distribution’, which combine aleatory and epistemic uncertainty.
+Predictive distributions express both aleatory and epistemic uncertainty, but in an unknown combination. 
+
+Examples, demo using GeNIE
+
+.footnote[Reference: Sahlin, Helle, Perepolkin (in press)]
+---
+
+# BHM vs BN
+
+.pull-left[
+**Bayesian Hierarchical Models**
+1. Parameters and variables modeled with probability distributions
+
+1. Bayesian updating to infer parameters
+
+1. Handle categorical, discrete and continuous variables
+]
+
+.pull-right[
+**Bayesian Networks**
+1. Variables modeled with probability distributions
+
+1. Bayesian updating to infer variables
+
+1. Handle categorical or discretisized continuous or discrete variables
+]
+
+---
+
+# A way forward
+Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
+BHM for parametric inference
+
+-Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts
+
+-Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (toxic, present, invasive etc)
+
+---
+# Borsuk revisited
+
+Use aleatory BN to combine variables from several BHMs
+
+---
+
+# xx revisited
+
+Use epistemic BN to reason using parameters informed by evidence synthesis set up as a BHMs
+
+---
+
+# Thanks!
+
+'ullrika.sahlin@cec.lu.se'
+
+Slides are available at https://github.com/lu-unevil/BHMnBN
+
+.footnote[Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)]
+---
+
+# References
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
