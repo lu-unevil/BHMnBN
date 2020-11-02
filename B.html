@@ -157,11 +157,10 @@ These can, but don’t have to be used together to assess risk.
 ]
 
 .pull-right[
-#### P(A|background knowledge)
 
 $$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
 
-`$$d* = \underset{d \in D}{min} P(A|E\,\&amp;\,D)$$`
+`$$d^* = \underset{d \in D}{min} P(A|E\,\&amp;\,d)$$`
 ]
 
 ### Questions
@@ -169,10 +168,9 @@ In what way are Bayesian Networks related to these three pillars of Bayesian met
 What is required to treat uncertainty when BNs are used for ecological risk assessment?
 
 ###Proposition
-&lt;!-- Comment by dmi3kno on 2020-11-02 12:53 
-Statistical models which explicitly address structural uncertainty can support uncertainty analysis in ERA. BNs do not handle structural uncertainty by default, unless they are "wrapped" into the hierarchical model (Enhanced BNs). 
---&gt;
-Statistical models which quantify uncertainty in parameters can support uncertainty analysis of BNs  [needs reformulation]
+Uncertainty about the model structure and parameters within models is not handled by BNs by default. 
+Statistical models which explicitly address uncertainty can support both parametric inference and uncertainty analysis in ERA.
+If so, a BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty in parameters.
 ---
 # Hierarchical models
 
@@ -181,9 +179,7 @@ What is a HM
 What is a BHM
 
 Demo using brms. Compared to a frequentist specification side by side.
-&lt;!-- Comment by dmi3kno on 2020-11-02 12:53 
-I thik jags would be overwhelming
---&gt;
+
 ---
 # Bayesian networks
 &lt;!-- Comment by dmi3kno on 2020-11-02 12:53 
@@ -195,16 +191,9 @@ Epistemic BNs are expert-informed networks used for probabilistic reasoning in l
 Node state probabilities (other than nodes for data) are subjective probabilities that express epistemic uncertainty
 
 ###Aleatory BN
-Node state probabilities are relative frequencies that express aleatory uncertainty (variability)
-
 An aleatory BN is a model for aleatory uncertainty in probabilistic risk assessments.
 
-###Predictive BN
-
-A predictive BN is a BN where the probability distribution for the assessment variable nodes represents a mixture of uncertainty and variability about a future sampling event. 
-
-Node state probabilities are a ‘predictive distribution’, which combine aleatory and epistemic uncertainty.
-Predictive distributions express both aleatory and epistemic uncertainty, but in an unknown combination. 
+Node state probabilities are relative frequencies that express aleatory uncertainty (variability)
 
 Examples, demo using GeNIE
 
