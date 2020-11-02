@@ -1,5 +1,5 @@
 ---
-title: "Both begin with a B - Bayesian networks or Bayesian hierarchical modelling for ecological risk assessment"
+title: "Both begin with a B: <br> Bayesian networks or Bayesian hierarchical modelling for ecological risk assessment"
 subtitle: "SETAC North America 2020"
 author: "Ullrika Sahlin and Dmytro Perepolkin"
 institute: "Lund University, Sweden"
@@ -8,18 +8,19 @@ output:
   xaringan::moon_reader:
     lib_dir: libs
     nature:
+      beforeInit: "macros.js"
+      ratio: '16:9'
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
 ---
-
+<!-- Comment by dmi3kno on 2020-11-02 12:53 
+I will change the title slide and the template later
+-->
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 ```
-
----
-class: left, middle
 
 # Abstract
 An ecological risk assessment is about integrating sources of evidence with expert knowledge to assess severity of impacts or likelihood of adverse events. An important task in risk assessment is to evaluate the impact of limitations in knowledge on epistemic uncertainty in the assessment. The Bayesian paradigm contains several pillars: Bayes rule for inference, subjective probability to quantify uncertainty and a rule for Bayes optimal decisions. These can, but don’t have to be used together to assess risk. Depending on the nature of the risk assessment, probabilistic reasoning applies on variables (aleatory uncertainty) or on models (or parameters within models) (epistemic uncertainty). Bayesian hierarchical models can consider both aleatory and epistemic uncertainty with statistical and predictive rigor, but at the loss of computational speed as the model become more complex. In this talk, I will clarify the distinction between Bayesian networks and Bayesian hierarchical modelling, and show the usefulness and limitations of both approaches. I conclude my talk by proposing a way forward, where both Bayesian networks and Bayesian hierarchical modelling are used for ecological risk assessment. 
@@ -27,10 +28,11 @@ An ecological risk assessment is about integrating sources of evidence with expe
 ---
 class: inverse, middle, center
 .pull-left[
-![scale = 50%](figs/ingemar.png)
+![:scale 50%](figs/ingemar.png)
 ]
 .pull-right[
 "Uncertainty is an uncomfortable position. But certainty is an absurd one."
+
 Voltaire 1694 - 1778
 ]
 ---
@@ -38,48 +40,34 @@ Voltaire 1694 - 1778
 
 - Uncertainty arise from limitations in knowledge
 
-- Someone is uncertain
-
----
-# Uncertainty in risk assessment
-
-- Uncertainty arise from limitations in knowledge
-
-- Someone is uncertain
-
+- Uncertainty is personal. *Someone* is uncertain
+--
 .pull-left[
 ### Epistemic uncertainty
-![scale = 50%](figs/epi.gif)
+![:scale 40%](figs/epi.gif)
 ]
 
----
-
-# Uncertainty in risk assessment
-
-- Uncertainty arise from limitations in knowledge
-
-- Someone is uncertain
-
-.pull-left[
-### Epistemic uncertainty
-![scale = 50%](figs/epi.gif)
-]
+--
 .pull-right[
 ### Aleatory uncertainty
-![scale = 50%](figs/ale.gif)
+![:scale 40%](figs/ale.gif)
 ]
 ---
 # Uncertainty in risk assessment
 
 - Uncertainty arise from limitations in knowledge
 
-- Someone is uncertain
+- Uncertainty is personal. *Someone* is uncertain
 
-- Epistemic uncertainty: uncertainty about the model (including parameters), lack of scientific consensus, small sample sizes, bias or low quality in experimental studies, observation or measurement errors, ambiguous terms, misunderstandings
+- Epistemic uncertainty (from Ancient Greek: *ἐπιστήμη*, epistēmē, 'knowledge')
 
-- Aleatory uncertainty: inherent randomness in real world systems, heterogeneity, variability, between study variability, chance outcomes
+  - uncertainty about the model (including parameters), lack of scientific consensus, small sample sizes, bias or low quality in experimental studies, observation or measurement errors, ambiguous terms, misunderstandings
+
+- Aleatory uncertainty (from Latin *ālĕa*, dice): 
+  - inherent randomness in real world systems, heterogeneity, variability, between study variability, chance outcomes
 
 - Ontological uncertainty
+  - uncertainty about the future, in which our current objectives, management alternatives and understanding of the world (models) are made obsolete by change.
 
 ---
 
@@ -91,19 +79,22 @@ class: inverse, middle, center
 Hansson, S.O. (2009). From the casino to the jungle. Synthese
 ]
 .pull-right[
-![scale = 50%](figs/Casino-lede-01-1-1300x863.jpg)
+![:scale 100%](figs/Casino-lede-01-1-1300x863.jpg)
 ]
 ---
+<!-- Comment by dmi3kno on 2020-11-02 12:53 
+I can help fix the references a bit later
+-->
+
 # Communicate uncertainty
 - Communicating uncertainty to decision makers is important
 
-"Unless uncertainty is known
-a decision maker can place too much confidence in experts and face unexpected problems
-or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted
+>"Unless uncertainty is known a decision maker can place too much confidence in experts and face unexpected problems
+or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted. <br>
+>In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"
 
-In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"
+> Fischhoff and Davis (2014). Communicating scientific uncertainty. PNAS
 
-Fischhoff and Davis (2014). Communicating scientific uncertainty. PNAS
 
 - Uncertainty analysis is an integral part of risk assessment 
 
@@ -112,47 +103,40 @@ Benford et al (2018). The principles and methods behind EFSA's guidance on uncer
 SAPEA 2019:7. Scientific Advice to European Policy in a Complex World
 Institute of Medicine 
 
-
 ---
 # Expressing epistemic uncertainty
 
 ###Direct uncertainty (about facts, numbers and scientific models)
--Verbal statements
+- Verbal statements
 
--Intervals
+- Intervals
 
--Probability
+- Probability
 
 .footnote[Reference: Van der Bles et al 2019]
----
-# Expressing epistemic uncertainty
-###Direct uncertainty (about facts, numbers and scientific models)
--Verbal statements
 
--Intervals
-
--Probability
+--
 
 ###Indirect uncertainty (strength in knowledge)
--List of caveats
+- List of caveats
 
--Judged error or risk of different biases
+- Judged error or risk of different biases
 
 
 .footnote[Reference: Van der Bles et al 2019]
 ---
 # Expressing epistemic uncertainty
 ###Direct uncertainty (about facts, numbers and scientific models)
--Verbal statements
+- Verbal statements
 
--Intervals
+- Intervals
 
--Probability - a precise way to express epistemic uncertainty (make bold)
+- Probability - a **precise way** to express epistemic uncertainty
 
 ###Indirect uncertainty (strength in knowledge)
--List of caveats
+- List of caveats
 
--Judged error or risk of different biases
+- Judged error or risk of different biases
 
 
 .footnote[Reference: Van der Bles et al 2019]
@@ -165,23 +149,26 @@ Institute of Medicine
 2. Bayes rule for inference
 
 3. Rule for Bayes optimal decisions
+
+These can, but don’t have to be used together to assess risk. 
 ]
 
 .pull-right[
-P(A|background knowledge)
+#### P(A|background knowledge)
 
- $$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
+$$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
 
-$$ d* = \min_{d \in D} P(A|E & D) $$
+$$d* = \underset{d \in D}{min} P(A|E\,\&\,D)$$
 ]
 
-These can, but don’t have to be used together to assess risk. 
-
-In what way are Bayesian Networks related to these three pillars of Bayesian methods?
-
+### Questions
+In what way are Bayesian Networks related to these three pillars of Bayesian methods?  
 What is required to treat uncertainty when BNs are used for ecological risk assessment?
 
 ###Proposition
+<!-- Comment by dmi3kno on 2020-11-02 12:53 
+Statistical models which explicitly address structural uncertainty can support uncertainty analysis in ERA. BNs do not handle structural uncertainty by default, unless they are "wrapped" into the hierarchical model (Enhanced BNs). 
+-->
 Statistical models which quantify uncertainty in parameters can support uncertainty analysis of BNs  [needs reformulation]
 ---
 # Hierarchical models
@@ -190,10 +177,15 @@ What is a HM
 
 What is a BHM
 
-Demo using brms or jags
-
+Demo using brms. Compared to a frequentist specification side by side.
+<!-- Comment by dmi3kno on 2020-11-02 12:53 
+I thik jags would be overwhelming
+-->
 ---
 # Bayesian networks
+<!-- Comment by dmi3kno on 2020-11-02 12:53 
+This needs to be split over two slides. Lets add more content first
+-->
 ###Epistemic BN
 Epistemic BNs are expert-informed networks used for probabilistic reasoning in light of the evidence brought into the network. 
 
@@ -242,9 +234,9 @@ Examples, demo using GeNIE
 Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
 BHM for parametric inference
 
--Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts
+- Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts
 
--Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (toxic, present, invasive etc)
+- Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (toxic, present, invasive etc)
 
 ---
 # Borsuk revisited
