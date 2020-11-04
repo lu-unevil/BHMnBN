@@ -204,7 +204,7 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 
 - Probability
 
-.footnote[Reference: `r ct("@vanderbles2019CommunicatingUncertaintyFacts")`]
+.footnote[`r ct("@vanderbles2019CommunicatingUncertaintyFacts")`]
 
 --
 
@@ -228,7 +228,9 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 - Judged error or risk of different biases
 
 
-.footnote[Reference: `r ct("@vanderbles2019CommunicatingUncertaintyFacts")`]
+.footnote[`r ct("@vanderbles2019CommunicatingUncertaintyFacts")`]
+
+
 ---
 # Bayesian methods
 .pull-left[
@@ -277,7 +279,7 @@ Node state probabilities are relative frequencies that express aleatory uncertai
 
 **Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.**
 
-.footnote[Reference: Sahlin Helle et al. (in press)]
+.footnote[`r ct("@sahlin2020bn")`]
 ---
 # BHM for uncertainty analysis of a BN
 
@@ -302,9 +304,12 @@ Variables from several BHMs can be combined into an aleatory BN
 ]
 
 ---
+.pull-left[
 ![:scale 80%](figs/binomialBHM.png)
-![:scale 50%](figs/BN_treat.png)
-
+]
+.pull-right[
+![:scale 120%](figs/BN_treat.png)
+]
 ---
 # BHM vs BN
 
