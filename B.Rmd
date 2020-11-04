@@ -225,6 +225,9 @@ Variables from several BHMs are combined into an aleatory BN
 .footnote[Borsuk et al. 2004. A Bayesian network of eutrophication models for synthesis, prediction, and uncertainty analysis. Ecological Modelling.]
 ]
  
+ 
+---
+![scale 80%](figs/binomialBHM.png)
 ---
 # BHM vs BN
 
