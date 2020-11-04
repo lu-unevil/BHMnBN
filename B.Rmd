@@ -6,7 +6,9 @@ institute: "Lund University, Sweden"
 date: "2020/11/19"
 output:
   xaringan::moon_reader:
+    css: xaringan-themer.css
     lib_dir: libs
+    seal: false
     nature:
       beforeInit: "macros.js"
       ratio: '16:9'
@@ -14,27 +16,107 @@ output:
       highlightLines: true
       countIncrementalSlides: false
 ---
-<!-- Comment by dmi3kno on 2020-11-02 12:53 
-I will change the title slide and the template later
--->
+class: title-slide, inverse, left
 
-```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
+background-image: url(figs/theB.png)
+background-position: right 25px bottom 25px
+background-size: 200px
+
+```{css, echo = FALSE}
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+.large { 
+  font-size: 130%;
+  }
+.small { 
+  font-size: 70%;
+  }
+.tiny { 
+  font-size: 40%;
+  }
+
 ```
 
+```{r setup, include=FALSE}
+library(magrittr)
+options(htmltools.dir.version = FALSE)
+
+cp <- function(keys, ..., bib=bibf){
+  keys <- gsub("^@", "", keys)
+  RefManageR::Citep(bib, keys, ...)
+}
+ct <- function(keys, ..., bib=bibf){
+  keys <- gsub("^@", "", keys)
+  RefManageR::Citet(bib, keys, ...)
+}
+
+RefManageR::BibOptions(check.entries = FALSE, bib.style = "authoryear", 
+                       style = "markdown", max.names=2, dashed = TRUE)
+bibf <- 'BHMnBN.bib' %>% 
+  #rbbt::bbt_write_bib(overwrite = TRUE) %>% 
+  RefManageR::ReadBib()
+```
+
+```{r xaringan-extra-all-the-things, echo=FALSE}
+xaringanExtra::use_xaringan_extra(
+  c("tile_view", "panelset", "tachyons")
+)
+
+#xaringanExtra::use_share_again()
+#xaringanExtra::style_share_again( share_buttons = "all")
+
+xaringanExtra::use_tachyons()
+
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+
+xaringanExtra::use_logo("fig/lu-logo.png",
+                        link_url = "https://www.cec.lu.se/")
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(base_color = "#272822",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+<br><br><br>
+.f-subheadline.lh-copy.fw6[Both begin with a B]
+
+.f3.fw6.lh-copy[Bayesian networks or Bayesian hierarchical modelling<br> for ecological risk assessment]
+
+<br>
+
+.f3[SETAC North America 2020]
+
+<br>
+
+.f4.fw6[Ullrika Sahlin and Dmytro Perepolkin]   
+.f4[Lund University, Sweden]
+
+.f4[2020-11-19]
+---
 # Abstract
 
 12 minutes or less
 
-An ecological risk assessment is about integrating sources of evidence with expert knowledge to assess severity of impacts or likelihood of adverse events. An important task in risk assessment is to evaluate the impact of limitations in knowledge on epistemic uncertainty in the assessment. The Bayesian paradigm contains several pillars: Bayes rule for inference, subjective probability to quantify uncertainty and a rule for Bayes optimal decisions. These can, but don’t have to be used together to assess risk. Depending on the nature of the risk assessment, probabilistic reasoning applies on variables (aleatory uncertainty) or on models (or parameters within models) (epistemic uncertainty). Bayesian hierarchical models can consider both aleatory and epistemic uncertainty with statistical and predictive rigor, but at the loss of computational speed as the model become more complex. In this talk, I will clarify the distinction between Bayesian networks and Bayesian hierarchical modelling, and show the usefulness and limitations of both approaches. I conclude my talk by proposing a way forward, where both Bayesian networks and Bayesian hierarchical modelling are used for ecological risk assessment. 
+An ecological risk assessment is about integrating sources of evidence with expert knowledge to assess severity of impacts or likelihood of adverse events. An important task in risk assessment is to evaluate the impact of limitations in knowledge on epistemic uncertainty in the assessment. The Bayesian paradigm contains several pillars: Bayes rule for inference, subjective probability to quantify uncertainty and a rule for Bayes optimal decisions. These can, but don’t have to be used together to assess risk. Depending on the nature of the risk assessment, probabilistic reasoning applies on variables (aleatory uncertainty) or on models (or parameters within models) (epistemic uncertainty). Bayesian hierarchical models can consider both aleatory and epistemic uncertainty with statistical and predictive rigor, but at the loss of computational speed as the model become more complex. In this talk, I will clarify the distinction between Bayesian networks and Bayesian hierarchical modeling, and show the usefulness and limitations of both approaches. I conclude my talk by proposing a way forward, where both Bayesian networks and Bayesian hierarchical modelling are used for ecological risk assessment. 
 
 ---
 class: inverse, middle, center
-.pull-left[
-![:scale 50%](figs/ingemar.png)
-]
+background-image: url(figs/ingemar.png)
+background-position: left 200px center
+background-size: 240px
+
 .pull-right[
-"Uncertainty is an uncomfortable position. But certainty is an absurd one."
+
+.f2["Uncertainty is an uncomfortable position. But certainty is an absurd one."]
 
 Voltaire 1694 - 1778
 ]
@@ -46,13 +128,15 @@ Voltaire 1694 - 1778
 - Uncertainty is personal. *Someone* is uncertain
 --
 .pull-left[
-### Epistemic uncertainty
+.f5.fw6[Epistemic uncertainty]  
+
 ![:scale 40%](figs/epi.gif)
 ]
 
 --
 .pull-right[
-### Aleatory uncertainty
+.f5.fw6[Aleatory uncertainty]  
+
 ![:scale 40%](figs/ale.gif)
 ]
 ---
@@ -73,38 +157,42 @@ Voltaire 1694 - 1778
   - uncertainty about the future, in which our current objectives, management alternatives and understanding of the world (models) are made obsolete by change.
 
 ---
-
 class: inverse, middle, center
-# Tuxedo fallacy
+background-image: url(figs/Casino-lede-01-1-1300x863.jpg)
+background-position: right 100px center
+background-size: 400px
+
+
 .pull-left[
-"Treating all decisions as if they took place under epistemic conditions analogous to gambling at the roulette table."
+# Tuxedo fallacy
+.f3.white["Treating all decisions as if they took place under epistemic conditions analogous to gambling at the roulette table."]
 
-Hansson, S.O. (2009). From the casino to the jungle. Synthese
+`r ct("@hansson2009CasinoJungle", .opts=list(hyperlink=FALSE))`
+
 ]
-.pull-right[
-![:scale 100%](figs/Casino-lede-01-1-1300x863.jpg)
-]
+
 ---
-<!-- Comment by dmi3kno on 2020-11-02 12:53 
-I can help fix the references a bit later
--->
-
 # Communicate uncertainty
 - Communicating uncertainty to decision makers is important
 
->"Unless uncertainty is known a decision maker can place too much confidence in experts and face unexpected problems
-or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted. <br>
->In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"
-
-> Fischhoff and Davis (2014). Communicating scientific uncertainty. PNAS
-
+.bg-washed-green.b--dark-green.ba.bw1.br3.shadow-5.ph4.mt0[
+"Unless uncertainty is known a decision maker can place too much confidence in experts and face unexpected problems or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted.  
+In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"*  
+.tr[
+— `r ct("@fischhoff2014CommunicatingScientificUncertainty")`]
+]
 
 - Uncertainty analysis is an integral part of risk assessment 
 
-Benford et al (2018). The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
+--
 
-SAPEA 2019:7. Scientific Advice to European Policy in a Complex World
-Institute of Medicine 
+.f5.fw6.lh-copy[References]
+
+`r ct("@efsa2018PrinciplesMethodsEFSA")` The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
+
+`r ct("@sapea2019ScientificAdviceEuropean")` Scientific Advice to European Policy in a Complex World
+
+`r ct("@instituteofmedicine2013EnvironmentalDecisionsFace")` Environmental decisions in the face of uncertainty
 
 ---
 # Expressing epistemic uncertainty
@@ -116,7 +204,7 @@ Institute of Medicine
 
 - Probability
 
-.footnote[Reference: Van der Bles et al 2019]
+.footnote[Reference: `r ct("@vanderbles2019CommunicatingUncertaintyFacts")`]
 
 --
 
@@ -125,8 +213,6 @@ Institute of Medicine
 
 - Judged error or risk of different biases
 
-
-.footnote[Reference: Van der Bles et al 2019]
 ---
 # Expressing epistemic uncertainty
 ###Direct uncertainty (about facts, numbers and scientific models)
@@ -134,7 +220,7 @@ Institute of Medicine
 
 - Intervals
 
-- Probability - a **precise way** to express epistemic uncertainty
+- Probability - a *precise way* to express epistemic uncertainty
 
 ###Indirect uncertainty (strength in knowledge)
 - List of caveats
@@ -142,16 +228,16 @@ Institute of Medicine
 - Judged error or risk of different biases
 
 
-.footnote[Reference: Van der Bles et al 2019]
+.footnote[Reference: `r ct("@vanderbles2019CommunicatingUncertaintyFacts")`]
 ---
 # Bayesian methods
 .pull-left[
 
 1. Subjective probability to quantify uncertainty
 
-2. Bayes rule for inference
+1. Bayes rule for inference
 
-3. Rule for Bayes optimal decisions
+1. Rule for Bayes optimal decisions
 
 These can, but don’t have to be used together. 
 ]
@@ -163,73 +249,71 @@ $$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
 $$d^* = \underset{d \in D}{min} P(A|E\,\&\,d)$$
 ]
 
----
-# Bayesian methods
-.pull-left[
-
-1. Subjective probability to quantify uncertainty
-
-2. Bayes rule for inference
-
-3. Rule for Bayes optimal decisions
-]
-
-.pull-right[
-
-$$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
-
-$$d^* = \underset{d \in D}{min} P(A|E\,\&\,d)$$
-]
+--
 
 ### Questions
 In what way are Bayesian Networks related to these three pillars of Bayesian methods?  
 
 What is required to treat uncertainty when BNs are used for ecological risk assessment?
 
-**These three Bayesian pillars can, but don’t have to be used together in an assessment.** 
-
-**Uncertainty about the model structure and parameters within models is not handled by BNs by default.** 
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4.mt4[
+Uncertainty about the model structure and parameters within models is not handled by BNs by default.
+] 
 ---
 # Bayesian networks
-**How to treat uncertainty depends on the type of network**
-<!-- Comment by dmi3kno on 2020-11-02 12:53 
-This needs to be split over two slides. Lets add more content first
--->
-###Epistemic BN
-Epistemic BNs are expert-informed networks used for probabilistic reasoning in light of the evidence brought into the network. 
+How to treat uncertainty depends on the type of network
+
+.f3.fw6[Epistemic BN]
+
+Expert-informed networks used for probabilistic reasoning in light of the evidence brought into the network. 
 
 Node state probabilities (other than nodes for data) are subjective probabilities that express epistemic uncertainty.
-###Aleatory BN
+
+.f3.fw6[Aleatory BN]
+
 An aleatory BN is a model for aleatory uncertainty in a probabilistic risk assessment.
 
 Node state probabilities are relative frequencies that express aleatory uncertainty (variability).
 
 **Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.**
 
-.footnote[Reference: Sahlin, Helle, Perepolkin (in press)]
+.footnote[Reference: Sahlin Helle et al. (in press)]
 ---
 # BHM for uncertainty analysis of a BN
+
 .pull-left[
 A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
 
 Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions
 
 Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference
+<br><br><br><br>
+Variables from several BHMs can be combined into an aleatory BN
 
-.footnote[Gelman, BDA, Kadane]
+.footnote[`r ct(c("@gelman2013BayesianDataAnalysis", "@kadane1999RethinkingFoundationsStatistics"))`] 
 ]
+
+--
+
 .pull-right[
-Variables from several BHMs are combined into an aleatory BN
-
 ![:scale 80%](figs/borsuk_fig.jpg)
-.footnote[Borsuk et al. 2004. A Bayesian network of eutrophication models for synthesis, prediction, and uncertainty analysis. Ecological Modelling.]
+
+.footnote[`r ct("@borsuk2004BayesianNetworkEutrophication")`]
 ]
- 
 ---
 # BHM vs BN
 
 .pull-left[
-**Bayesian Hierarchical Models**
+.fw6[Bayesian Networks]
+1. Handle categorical, discrete and discretized continuous variables
+
+1. Parameters can be assigned by expert judgement or case learning
+
+1. Aleatory and Epistemic BNs
+]
+
+.pull-right[
+.fw6[Bayesian Hierarchical Models]
 1. Handle categorical, discrete and continuous variables, parameters are continous
 
 1. Parameters and variables modeled with probability distributions
@@ -237,23 +321,17 @@ Variables from several BHMs are combined into an aleatory BN
 1. Bayesian updating to infer parameters
 ]
 
-.pull-right[
-**Bayesian Networks**
-1. Handle categorical, discrete and discretized continuous variables
+--
 
-1. Parameters can be assigned by expert judgement or case learning
+<br>
+.fw6[Aleatory Bayesian Networks]
+  1. Assessment variables modeled with probability distributions (variability)
+  1. Bayesian updating to infer variables (parameters are fixed)
 
-**Aleatory Bayesian Networks**
-1. Assessment variables modeled with probability distributions (variability)
-
-1. Bayesian updating to infer variables (parameters are fixed)
-
-**Epistemic Bayesian Networks**
-1. Data nodes are modeled with probability distributions (likelihood)
-
-1. State nodes are modeled with probability distributions (uncertainty)
-
-1. Bayesian updating to infer state nodes (parameters are fixed)
+.fw6[Epistemic Bayesian Networks]
+  1. Data nodes are modeled with probability distributions (likelihood)
+  1. State nodes are modeled with probability distributions (uncertainty)
+  1. Bayesian updating to infer state nodes (parameters are fixed)
 ]
 
 ---
@@ -262,27 +340,45 @@ Variables from several BHMs are combined into an aleatory BN
 Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
 BHM for parametric inference
 
-- Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts
+- Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts `r cp("@borsuk2004BayesianNetworkEutrophication")`
 
-Borsuk et al. 2004. A Bayesian network of eutrophication models for synthesis, prediction, and uncertainty analysis. Ecological Modelling. 
-
-- Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc)
-
-Hu et al. 2020. How to Conduct a Bayesian Network Meta-Analysis. Front Vet Sci.
+- Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) `r cp("@hu2020HowConductBayesian")`
 
 ---
+class: left, middle
 
 # Thanks!
 
-ullrika.sahlin@cec.lu.se
+.f4[
+ullrika.sahlin@cec.lu.se  
 dmytro.perepolking@cec.lu.se
+]
+<br><br>
 
-Acknowledgments: Swedish research council for sustainable development 
-![scale=5%](figs/formas_logo.svg)
+.f4.fw6[
+Acknowledgments]
 
+![:scale 20%](figs/formas_logo.svg)
+
+Swedish research council for sustainable development  
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)
+
+<br><br><br>
+
+.f4[
 Slides are available at https://github.com/lu-unevil/BHMnBN
+]
 
-.footnote[Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)]
 ---
 
 # References
+```{r, results='asis', echo=FALSE}
+RefManageR::PrintBibliography(bibf, start = 1, end = 6)
+```
+---
+# References
+```{r, results='asis', echo=FALSE}
+RefManageR::PrintBibliography(bibf, start = 7, end = min(12,length(bibf)))
+```
+

@@ -4,40 +4,108 @@
     <title>Both begin with a B:   Bayesian networks or Bayesian hierarchical modelling for ecological risk assessment</title>
     <meta charset="utf-8" />
     <meta name="author" content="Ullrika Sahlin and Dmytro Perepolkin" />
-    <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+    <link href="libs/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view/tile-view.js"></script>
+    <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <link href="libs/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
-class: center, middle, inverse, title-slide
 
-# Both begin with a B: <br> Bayesian networks or Bayesian hierarchical modelling for ecological risk assessment
-## SETAC North America 2020
-### Ullrika Sahlin and Dmytro Perepolkin
-### Lund University, Sweden
-### 2020/11/19 (updated: 2020-11-04)
+class: title-slide, inverse, left
 
+background-image: url(figs/theB.png)
+background-position: right 25px bottom 25px
+background-size: 200px
+
+&lt;style type="text/css"&gt;
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+.large { 
+  font-size: 130%;
+  }
+.small { 
+  font-size: 70%;
+  }
+.tiny { 
+  font-size: 40%;
+  }
+
+&lt;/style&gt;
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(fig/lu-logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('a')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = 'https://www.cec.lu.se/'
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.f-subheadline.lh-copy.fw6[Both begin with a B]
+
+.f3.fw6.lh-copy[Bayesian networks or Bayesian hierarchical modelling&lt;br&gt; for ecological risk assessment]
+
+&lt;br&gt;
+
+.f3[SETAC North America 2020]
+
+&lt;br&gt;
+
+.f4.fw6[Ullrika Sahlin and Dmytro Perepolkin]   
+.f4[Lund University, Sweden]
+
+.f4[2020-11-19]
 ---
-
-&lt;!-- Comment by dmi3kno on 2020-11-02 12:53 
-I will change the title slide and the template later
---&gt;
-
-
-
 # Abstract
 
 12 minutes or less
 
-An ecological risk assessment is about integrating sources of evidence with expert knowledge to assess severity of impacts or likelihood of adverse events. An important task in risk assessment is to evaluate the impact of limitations in knowledge on epistemic uncertainty in the assessment. The Bayesian paradigm contains several pillars: Bayes rule for inference, subjective probability to quantify uncertainty and a rule for Bayes optimal decisions. These can, but don’t have to be used together to assess risk. Depending on the nature of the risk assessment, probabilistic reasoning applies on variables (aleatory uncertainty) or on models (or parameters within models) (epistemic uncertainty). Bayesian hierarchical models can consider both aleatory and epistemic uncertainty with statistical and predictive rigor, but at the loss of computational speed as the model become more complex. In this talk, I will clarify the distinction between Bayesian networks and Bayesian hierarchical modelling, and show the usefulness and limitations of both approaches. I conclude my talk by proposing a way forward, where both Bayesian networks and Bayesian hierarchical modelling are used for ecological risk assessment. 
+An ecological risk assessment is about integrating sources of evidence with expert knowledge to assess severity of impacts or likelihood of adverse events. An important task in risk assessment is to evaluate the impact of limitations in knowledge on epistemic uncertainty in the assessment. The Bayesian paradigm contains several pillars: Bayes rule for inference, subjective probability to quantify uncertainty and a rule for Bayes optimal decisions. These can, but don’t have to be used together to assess risk. Depending on the nature of the risk assessment, probabilistic reasoning applies on variables (aleatory uncertainty) or on models (or parameters within models) (epistemic uncertainty). Bayesian hierarchical models can consider both aleatory and epistemic uncertainty with statistical and predictive rigor, but at the loss of computational speed as the model become more complex. In this talk, I will clarify the distinction between Bayesian networks and Bayesian hierarchical modeling, and show the usefulness and limitations of both approaches. I conclude my talk by proposing a way forward, where both Bayesian networks and Bayesian hierarchical modelling are used for ecological risk assessment. 
 
 ---
 class: inverse, middle, center
-.pull-left[
-![:scale 50%](figs/ingemar.png)
-]
+background-image: url(figs/ingemar.png)
+background-position: left 200px center
+background-size: 240px
+
 .pull-right[
-"Uncertainty is an uncomfortable position. But certainty is an absurd one."
+
+.f2["Uncertainty is an uncomfortable position. But certainty is an absurd one."]
 
 Voltaire 1694 - 1778
 ]
@@ -49,13 +117,15 @@ Voltaire 1694 - 1778
 - Uncertainty is personal. *Someone* is uncertain
 --
 .pull-left[
-### Epistemic uncertainty
+.f5.fw6[Epistemic uncertainty]  
+
 ![:scale 40%](figs/epi.gif)
 ]
 
 --
 .pull-right[
-### Aleatory uncertainty
+.f5.fw6[Aleatory uncertainty]  
+
 ![:scale 40%](figs/ale.gif)
 ]
 ---
@@ -76,38 +146,42 @@ Voltaire 1694 - 1778
   - uncertainty about the future, in which our current objectives, management alternatives and understanding of the world (models) are made obsolete by change.
 
 ---
-
 class: inverse, middle, center
-# Tuxedo fallacy
+background-image: url(figs/Casino-lede-01-1-1300x863.jpg)
+background-position: right 100px center
+background-size: 400px
+
+
 .pull-left[
-"Treating all decisions as if they took place under epistemic conditions analogous to gambling at the roulette table."
+# Tuxedo fallacy
+.f3.white["Treating all decisions as if they took place under epistemic conditions analogous to gambling at the roulette table."]
 
-Hansson, S.O. (2009). From the casino to the jungle. Synthese
+Hansson (2009)
+
 ]
-.pull-right[
-![:scale 100%](figs/Casino-lede-01-1-1300x863.jpg)
-]
+
 ---
-&lt;!-- Comment by dmi3kno on 2020-11-02 12:53 
-I can help fix the references a bit later
---&gt;
-
 # Communicate uncertainty
 - Communicating uncertainty to decision makers is important
 
-&gt;"Unless uncertainty is known a decision maker can place too much confidence in experts and face unexpected problems
-or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted. &lt;br&gt;
-&gt;In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"
-
-&gt; Fischhoff and Davis (2014). Communicating scientific uncertainty. PNAS
-
+.bg-washed-green.b--dark-green.ba.bw1.br3.shadow-5.ph4.mt0[
+"Unless uncertainty is known a decision maker can place too much confidence in experts and face unexpected problems or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted.  
+In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"*  
+.tr[
+— &lt;a name=cite-fischhoff2014CommunicatingScientificUncertainty&gt;&lt;/a&gt;[Fischhoff and Davis (2014)](https://www.pnas.org/content/111/Supplement_4/13664)]
+]
 
 - Uncertainty analysis is an integral part of risk assessment 
 
-Benford et al (2018). The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
+--
 
-SAPEA 2019:7. Scientific Advice to European Policy in a Complex World
-Institute of Medicine 
+.f5.fw6.lh-copy[References]
+
+&lt;a name=cite-efsa2018PrinciplesMethodsEFSA&gt;&lt;/a&gt;[EFSA, Benford, Halldorsson, Jeger, Knutsen, More, Naegeli, Noteborn, Ockleford, Ricci, Rychen, Schlatter, Silano, Solecki, Turck, Younes, Craig, Hart, Von Goetz, Koutsoumanis, Mortensen, Ossendorp, Germini, Martino, Merten, Mosbach‐Schulz, Smith, and Hardy (2018)](https://data.europa.eu/doi/10.2903/j.efsa.2018.5122) The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
+
+&lt;a name=cite-sapea2019ScientificAdviceEuropean&gt;&lt;/a&gt;[SAPEA, EC, and EC (2019)](https://data.europa.eu/doi/10.2777/68120) Scientific Advice to European Policy in a Complex World
+
+&lt;a name=cite-instituteofmedicine2013EnvironmentalDecisionsFace&gt;&lt;/a&gt;[Institute of Medicine (2013)](http://www.nap.edu/catalog/12568) Environmental decisions in the face of uncertainty
 
 ---
 # Expressing epistemic uncertainty
@@ -119,7 +193,9 @@ Institute of Medicine
 
 - Probability
 
-.footnote[Reference: Van der Bles et al 2019]
+.footnote[Reference: &lt;a name=cite-vanderbles2019CommunicatingUncertaintyFacts&gt;&lt;/a&gt;[van der
+Bles, van der
+Linden, Freeman, Mitchell, Galvao, Zaval, and Spiegelhalter (2019)](https://royalsocietypublishing.org/doi/10.1098/rsos.181870)]
 
 --
 
@@ -128,8 +204,6 @@ Institute of Medicine
 
 - Judged error or risk of different biases
 
-
-.footnote[Reference: Van der Bles et al 2019]
 ---
 # Expressing epistemic uncertainty
 ###Direct uncertainty (about facts, numbers and scientific models)
@@ -137,7 +211,7 @@ Institute of Medicine
 
 - Intervals
 
-- Probability - a **precise way** to express epistemic uncertainty
+- Probability - a *precise way* to express epistemic uncertainty
 
 ###Indirect uncertainty (strength in knowledge)
 - List of caveats
@@ -145,16 +219,18 @@ Institute of Medicine
 - Judged error or risk of different biases
 
 
-.footnote[Reference: Van der Bles et al 2019]
+.footnote[Reference: [van der
+Bles van der
+Linden, et al. (2019)](https://royalsocietypublishing.org/doi/10.1098/rsos.181870)]
 ---
 # Bayesian methods
 .pull-left[
 
 1. Subjective probability to quantify uncertainty
 
-2. Bayes rule for inference
+1. Bayes rule for inference
 
-3. Rule for Bayes optimal decisions
+1. Rule for Bayes optimal decisions
 
 These can, but don’t have to be used together. 
 ]
@@ -166,73 +242,71 @@ $$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
 `$$d^* = \underset{d \in D}{min} P(A|E\,\&amp;\,d)$$`
 ]
 
----
-# Bayesian methods
-.pull-left[
-
-1. Subjective probability to quantify uncertainty
-
-2. Bayes rule for inference
-
-3. Rule for Bayes optimal decisions
-]
-
-.pull-right[
-
-$$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
-
-`$$d^* = \underset{d \in D}{min} P(A|E\,\&amp;\,d)$$`
-]
+--
 
 ### Questions
 In what way are Bayesian Networks related to these three pillars of Bayesian methods?  
 
 What is required to treat uncertainty when BNs are used for ecological risk assessment?
 
-**These three Bayesian pillars can, but don’t have to be used together in an assessment.** 
-
-**Uncertainty about the model structure and parameters within models is not handled by BNs by default.** 
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4.mt4[
+Uncertainty about the model structure and parameters within models is not handled by BNs by default.
+] 
 ---
 # Bayesian networks
-**How to treat uncertainty depends on the type of network**
-&lt;!-- Comment by dmi3kno on 2020-11-02 12:53 
-This needs to be split over two slides. Lets add more content first
---&gt;
-###Epistemic BN
-Epistemic BNs are expert-informed networks used for probabilistic reasoning in light of the evidence brought into the network. 
+How to treat uncertainty depends on the type of network
+
+.f3.fw6[Epistemic BN]
+
+Expert-informed networks used for probabilistic reasoning in light of the evidence brought into the network. 
 
 Node state probabilities (other than nodes for data) are subjective probabilities that express epistemic uncertainty.
-###Aleatory BN
+
+.f3.fw6[Aleatory BN]
+
 An aleatory BN is a model for aleatory uncertainty in a probabilistic risk assessment.
 
 Node state probabilities are relative frequencies that express aleatory uncertainty (variability).
 
 **Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.**
 
-.footnote[Reference: Sahlin, Helle, Perepolkin (in press)]
+.footnote[Reference: Sahlin Helle et al. (in press)]
 ---
 # BHM for uncertainty analysis of a BN
+
 .pull-left[
 A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
 
 Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions
 
 Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+Variables from several BHMs can be combined into an aleatory BN
 
-.footnote[Gelman, BDA, Kadane]
+.footnote[&lt;a name=cite-gelman2013BayesianDataAnalysis&gt;&lt;/a&gt;&lt;a name=cite-kadane1999RethinkingFoundationsStatistics&gt;&lt;/a&gt;[Gelman, Carlin, Stern, Dunson, Vehtari, and Rubin (2013)](#bib-gelman2013BayesianDataAnalysis); [Kadane, Schervish, and Seidenfeld (1999)](https://www.cambridge.org/core/product/identifier/9781139173230/type/book)] 
 ]
+
+--
+
 .pull-right[
-Variables from several BHMs are combined into an aleatory BN
-
 ![:scale 80%](figs/borsuk_fig.jpg)
-.footnote[Borsuk et al. 2004. A Bayesian network of eutrophication models for synthesis, prediction, and uncertainty analysis. Ecological Modelling.]
+
+.footnote[&lt;a name=cite-borsuk2004BayesianNetworkEutrophication&gt;&lt;/a&gt;[Borsuk, Stow, and Reckhow (2004)](https://linkinghub.elsevier.com/retrieve/pii/S0304380003003958)]
 ]
- 
 ---
 # BHM vs BN
 
 .pull-left[
-**Bayesian Hierarchical Models**
+.fw6[Bayesian Networks]
+1. Handle categorical, discrete and discretized continuous variables
+
+1. Parameters can be assigned by expert judgement or case learning
+
+1. Aleatory and Epistemic BNs
+]
+
+.pull-right[
+.fw6[Bayesian Hierarchical Models]
 1. Handle categorical, discrete and continuous variables, parameters are continous
 
 1. Parameters and variables modeled with probability distributions
@@ -240,23 +314,17 @@ Variables from several BHMs are combined into an aleatory BN
 1. Bayesian updating to infer parameters
 ]
 
-.pull-right[
-**Bayesian Networks**
-1. Handle categorical, discrete and discretized continuous variables
+--
 
-1. Parameters can be assigned by expert judgement or case learning
+&lt;br&gt;
+.fw6[Aleatory Bayesian Networks]
+  1. Assessment variables modeled with probability distributions (variability)
+  1. Bayesian updating to infer variables (parameters are fixed)
 
-**Aleatory Bayesian Networks**
-1. Assessment variables modeled with probability distributions (variability)
-
-1. Bayesian updating to infer variables (parameters are fixed)
-
-**Epistemic Bayesian Networks**
-1. Data nodes are modeled with probability distributions (likelihood)
-
-1. State nodes are modeled with probability distributions (uncertainty)
-
-1. Bayesian updating to infer state nodes (parameters are fixed)
+.fw6[Epistemic Bayesian Networks]
+  1. Data nodes are modeled with probability distributions (likelihood)
+  1. State nodes are modeled with probability distributions (uncertainty)
+  1. Bayesian updating to infer state nodes (parameters are fixed)
 ]
 
 ---
@@ -265,30 +333,123 @@ Variables from several BHMs are combined into an aleatory BN
 Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
 BHM for parametric inference
 
-- Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts
+- Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts ([Borsuk Stow, et al., 2004](https://linkinghub.elsevier.com/retrieve/pii/S0304380003003958))
 
-Borsuk et al. 2004. A Bayesian network of eutrophication models for synthesis, prediction, and uncertainty analysis. Ecological Modelling. 
-
-- Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc)
-
-Hu et al. 2020. How to Conduct a Bayesian Network Meta-Analysis. Front Vet Sci.
+- Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) &lt;a name=cite-hu2020HowConductBayesian&gt;&lt;/a&gt;([Hu, O'Connor, Wang, Sargeant, and Winder, 2020](https://www.frontiersin.org/article/10.3389/fvets.2020.00271/full))
 
 ---
+class: left, middle
 
 # Thanks!
 
-'ullrika.sahlin@cec.lu.se'
+.f4[
+ullrika.sahlin@cec.lu.se  
+dmytro.perepolking@cec.lu.se
+]
+&lt;br&gt;&lt;br&gt;
 
+.f4.fw6[
+Acknowledgments]
 
-Acknowledgments: Swedish research council for sustainable development 
-![scale=25%](figs/formas_logo.svg)
+![:scale 20%](figs/formas_logo.svg)
 
+Swedish research council for sustainable development  
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+.f4[
 Slides are available at https://github.com/lu-unevil/BHMnBN
+]
 
-.footnote[Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)]
 ---
 
 # References
+&lt;a name=bib-vanderbles2019CommunicatingUncertaintyFacts&gt;&lt;/a&gt;[Bles, A.
+M. van der, S. van der Linden, et
+al.](#cite-vanderbles2019CommunicatingUncertaintyFacts) (2019).
+"Communicating Uncertainty about Facts, Numbers and Science". In:
+_Royal Society Open Science_ 6.5, p. 181870. DOI:
+[10/gf2g9j](https://doi.org/10%2Fgf2g9j). URL:
+[https://royalsocietypublishing.org/doi/10.1098/rsos.181870](https://royalsocietypublishing.org/doi/10.1098/rsos.181870)
+(visited on aug. 26, 2019).
+
+&lt;a name=bib-borsuk2004BayesianNetworkEutrophication&gt;&lt;/a&gt;[Borsuk, M. E.,
+C. A. Stow, et al.](#cite-borsuk2004BayesianNetworkEutrophication)
+(2004). "A Bayesian Network of Eutrophication Models for Synthesis,
+Prediction, and Uncertainty Analysis". In: _Ecological Modelling_
+173.2-3, pp. 219-239. ISSN: 03043800. DOI:
+[10/fn728t](https://doi.org/10%2Ffn728t). URL:
+[https://linkinghub.elsevier.com/retrieve/pii/S0304380003003958](https://linkinghub.elsevier.com/retrieve/pii/S0304380003003958)
+(visited on sep. 15, 2020).
+
+&lt;a name=bib-efsa2018PrinciplesMethodsEFSA&gt;&lt;/a&gt;[EFSA, D. Benford, et
+al.](#cite-efsa2018PrinciplesMethodsEFSA) (2018). "The Principles and
+Methods behind EFSA's Guidance on Uncertainty Analysis in Scientific
+Assessment". In: _EFSA Journal_ 16.1. ISSN: 18314732, 18314732. DOI:
+[10/ghhdx2](https://doi.org/10%2Fghhdx2). URL:
+[https://data.europa.eu/doi/10.2903/j.efsa.2018.5122](https://data.europa.eu/doi/10.2903/j.efsa.2018.5122)
+(visited on sep. 15, 2020).
+
+&lt;a
+name=bib-fischhoff2014CommunicatingScientificUncertainty&gt;&lt;/a&gt;[Fischhoff,
+B. and A. L.
+Davis](#cite-fischhoff2014CommunicatingScientificUncertainty) (2014).
+"Communicating Scientific Uncertainty". In: _Proceedings of the
+National Academy of Sciences_ 111 (Supplement 4), pp. 13664-13671.
+ISSN: 0027-8424, 1091-6490. DOI:
+[10/f6gwcg](https://doi.org/10%2Ff6gwcg). pmid: pmid. URL:
+[https://www.pnas.org/content/111/Supplement_4/13664](https://www.pnas.org/content/111/Supplement_4/13664)
+(visited on dec. 05, 2019).
+
+&lt;a name=bib-gelman2013BayesianDataAnalysis&gt;&lt;/a&gt;[Gelman, A., J. B.
+Carlin, et al.](#cite-gelman2013BayesianDataAnalysis) (2013). _Bayesian
+Data Analysis_. CRC press.
+
+Hansson, S. O. (2009). "From the Casino to the Jungle". In: _Synthese_
+168.3, pp. 423-432. ISSN: 1573-0964. DOI:
+[10/bgf9cp](https://doi.org/10%2Fbgf9cp). URL:
+[https://doi.org/10.1007/s11229-008-9444-1](https://doi.org/10.1007/s11229-008-9444-1)
+(visited on sep. 15, 2020).
+---
+# References
+&lt;a name=bib-hu2020HowConductBayesian&gt;&lt;/a&gt;[Hu, D., A. M. O'Connor, et
+al.](#cite-hu2020HowConductBayesian) (2020). "How to Conduct a Bayesian
+Network Meta-Analysis". In: _Frontiers in Veterinary Science_ 7, p.
+271. ISSN: 2297-1769. DOI: [10/ghd54x](https://doi.org/10%2Fghd54x).
+URL:
+[https://www.frontiersin.org/article/10.3389/fvets.2020.00271/full](https://www.frontiersin.org/article/10.3389/fvets.2020.00271/full)
+(visited on nov. 04, 2020).
+
+&lt;a
+name=bib-instituteofmedicine2013EnvironmentalDecisionsFace&gt;&lt;/a&gt;[Institute
+of Medicine](#cite-instituteofmedicine2013EnvironmentalDecisionsFace)
+(2013). _Environmental Decisions in the Face of Uncertainty_.
+Washington, D.C.: National Academies Press, p. 12568. ISBN:
+978-0-309-13034-9. DOI:
+[10.17226/12568](https://doi.org/10.17226%2F12568). URL:
+[http://www.nap.edu/catalog/12568](http://www.nap.edu/catalog/12568)
+(visited on maj. 03, 2020).
+
+&lt;a name=bib-kadane1999RethinkingFoundationsStatistics&gt;&lt;/a&gt;[Kadane, J.
+B., M. J. Schervish, et
+al.](#cite-kadane1999RethinkingFoundationsStatistics) (1999).
+_Rethinking the Foundations of Statistics_. 1st ed. Cambridge
+University Press. ISBN: 978-0-521-64975-9 978-0-521-64011-4
+978-1-139-17323-0. DOI:
+[10.1017/CBO9781139173230](https://doi.org/10.1017%2FCBO9781139173230).
+URL:
+[https://www.cambridge.org/core/product/identifier/9781139173230/type/book](https://www.cambridge.org/core/product/identifier/9781139173230/type/book)
+(visited on nov. 04, 2020).
+
+&lt;a name=bib-sapea2019ScientificAdviceEuropean&gt;&lt;/a&gt;[SAPEA, S. A. f. P.
+b. E. A., G. o. C. S. A. EC, et
+al.](#cite-sapea2019ScientificAdviceEuropean) (2019). _Scientific
+Advice to European Policy in a Complex World._ LU: Publications Office.
+URL:
+[https://data.europa.eu/doi/10.2777/68120](https://data.europa.eu/doi/10.2777/68120)
+(visited on nov. 04, 2020).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
