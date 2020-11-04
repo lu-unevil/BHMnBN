@@ -177,16 +177,14 @@ background-size: 400px
 
 .bg-washed-green.b--dark-green.ba.bw1.br3.shadow-5.ph4.mt0[
 "Unless uncertainty is known a decision maker can place too much confidence in experts and face unexpected problems or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted.  
-In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"*  
+In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"  
 .tr[
 — `r ct("@fischhoff2014CommunicatingScientificUncertainty")`]
 ]
 
-- Uncertainty analysis is an integral part of risk assessment 
 
 --
-
-.f5.fw6.lh-copy[References]
+- Uncertainty analysis is an integral part of risk assessment
 
 `r ct("@efsa2018PrinciplesMethodsEFSA")` The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
 
@@ -241,7 +239,7 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 
 1. Rule for Bayes optimal decisions
 
-These can, but don’t have to be used together. 
+.bg-washed-green.b--dark-green.ba.bw1.br3.shadow-5.ph4.mt0[These can, but don’t have to be used together. ]
 ]
 
 .pull-right[
@@ -308,7 +306,7 @@ Variables from several BHMs can be combined into an aleatory BN
 ![:scale 80%](figs/binomialBHM.png)
 ]
 .pull-right[
-![:scale 120%](figs/BN_treat.png)
+![:scale 100%](figs/BNtab.jpg)
 ]
 ---
 # BHM vs BN
@@ -319,7 +317,6 @@ Variables from several BHMs can be combined into an aleatory BN
 
 1. Parameters can be assigned by expert judgement or case learning
 
-1. Aleatory and Epistemic BNs
 ]
 
 .pull-right[
@@ -342,7 +339,7 @@ Variables from several BHMs can be combined into an aleatory BN
   1. Data nodes are modeled with probability distributions (likelihood)
   1. State nodes are modeled with probability distributions (uncertainty)
   1. Bayesian updating to infer state nodes (parameters are fixed)
-]
+
 
 ---
 
