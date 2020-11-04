@@ -228,6 +228,7 @@ Variables from several BHMs are combined into an aleatory BN
  
 ---
 ![scale 80%](figs/binomialBHM.png)
+![scale 50%](figs/BN_treat.png)
 ---
 # BHM vs BN
 
