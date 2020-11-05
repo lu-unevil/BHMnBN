@@ -134,7 +134,7 @@ Voltaire 1694 - 1778
 
   - uncertainty about the model (including parameters), lack of scientific consensus, small sample sizes, bias or low quality in experimental studies, observation or measurement errors, ambiguous terms, misunderstandings
 
-- Aleatory uncertainty (from Latin *ālĕa*, dice): 
+- Aleatory uncertainty (from Latin: *ālĕa*, dice): 
   - inherent randomness in real world systems, heterogeneity, variability, between study variability, chance outcomes
 
 - Ontological uncertainty
@@ -285,7 +285,7 @@ An aleatory BN is a model for aleatory uncertainty in a probabilistic risk asses
 
 Node state probabilities are relative frequencies that express aleatory uncertainty (variability).
 
-.footnote[&lt;a name=cite-sahlin2020ThisWhatWe&gt;&lt;/a&gt;[Sahlin Helle, et al. (2020b)](https://doi.org/10.1002/ieam.4367)]
+.footnote[&lt;a name=cite-sahlin2020ThisWhatWe&gt;&lt;/a&gt;[Sahlin Helle, et al. (2020)](https://doi.org/10.1002/ieam.4367)]
 --
 .bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.
 ]
@@ -296,39 +296,62 @@ Node state probabilities are relative frequencies that express aleatory uncertai
 .pull-left[
 A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
 
-Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions
+Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions.
 
-Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference
-&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-Variables from several BHMs can be combined into an aleatory BN
+Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference.
+
 
 .footnote[&lt;a name=cite-gelman2013BayesianDataAnalysis&gt;&lt;/a&gt;&lt;a name=cite-kadane2011PrinciplesUncertainty&gt;&lt;/a&gt;[Gelman Carlin, et al. (2013)](#bib-gelman2013BayesianDataAnalysis); [Kadane (2011)](#bib-kadane2011PrinciplesUncertainty)] 
 ]
 
---
+
+
+---
+# BHM for uncertainty analysis of a BN
+
+.pull-left[
+A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
+
+Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions.
+
+Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference.
+
+.footnote[[Gelman Carlin, et al. (2013)](#bib-gelman2013BayesianDataAnalysis); [Kadane (2011)](#bib-kadane2011PrinciplesUncertainty)] 
+
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[
+Variables from several BHMs can be combined into an aleatory BN
+]
+]
 
 .pull-right[
 ![:scale 80%](figs/borsuk_fig.jpg)
 
 .footnote[&lt;a name=cite-borsuk2004BayesianNetworkEutrophication&gt;&lt;/a&gt;[Borsuk Stow, et al. (2004)](https://linkinghub.elsevier.com/retrieve/pii/S0304380003003958)]
 ]
-
 ---
-background-image: url(figs/metamodel.png)
-background-position: right 100px bottom 70px
+background-image: url(figs/naive.png)
+background-position: right 100px bottom 150px
 background-size: 350px
 
-# Epistemic BN in meta-analysis
+# BHM for uncertainty analysis of a BN
+
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[
+BHMs can combine multiple sources of studies to inform an epistemic BN]
 
 .pull-left[
-Text  
+-Combine multiple sources of evidence using meta-analysis considering variability and error in data. 
 
-More text
+![:scale 100%](figs/clinical_BN.jpg)
+
+.footnote[&lt;a name=cite-hu2020HowConductBayesian&gt;&lt;/a&gt;&lt;a name=cite-YET2014373&gt;&lt;/a&gt;&lt;a name=cite-HAMILTON201564&gt;&lt;/a&gt;[Hu O'Connor, et al. (2020)](https://www.frontiersin.org/article/10.3389/fvets.2020.00271/full); [Yet Perkins, et al. (2014)](https://doi.org/10.1016/j.jbi.2014.07.018); [Hamilton Pollino, et al. (2015)](https://doi.org/10.1016/j.ecolmodel.2014.12.004)]
 ]
 
+.pull_right[
+-Consider measurement error or partial observability when building Bayes naive classifiers.
+]
 ---
-# BHM vs BN
-.footnote[[Sahlin Helle, et al. (2020b)](https://doi.org/10.1002/ieam.4367)]
+# BN vs BHM
+.footnote[[Sahlin Helle, et al. (2020)](https://doi.org/10.1002/ieam.4367)]
 
 .pull-left[
 .fw6[Bayesian Networks]
@@ -370,7 +393,7 @@ BHM for parametric inference combined with
 
 - Aleatory BNs to build integrated assessment models to assess probability of adverse events or impacts 
 
-- Epistemic BNs for probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) when the BN is informed by one or several sources of evidence
+- Epistemic BNs for probabilistic reasoning of the state of a systems based on multiple sources of evidence
 ]
 ---
 class: left, middle
@@ -387,10 +410,10 @@ dmytro.perepolking@cec.lu.se
 ### Acknowledgments
 
 ![:scale 50%](figs/formas_logo.svg)  
-Swedish research council for sustainable development  
+Swedish research council for sustainable development
+
+
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)
-
-
 
 .tr[
 .f3.fw7[Slides:]  
@@ -440,16 +463,24 @@ National Academy of Sciences_ 111 (Supplement 4), pp. 13664-13671. DOI:
 Carlin, et al.](#cite-gelman2013BayesianDataAnalysis) (2013). _Bayesian
 Data Analysis_. CRC press.
 
+&lt;a name=bib-HAMILTON201564&gt;&lt;/a&gt;[Hamilton, S. H., C. A. Pollino, et
+al.](#cite-HAMILTON201564) (2015). "Habitat Suitability Modelling of
+Rare Species Using Bayesian Networks: Model Evaluation under Limited
+Data". In: _Ecological Modelling_ 299, pp. 64-78. ISSN: 0304-3800. DOI:
+[10.1016/j.ecolmodel.2014.12.004](https://doi.org/10.1016%2Fj.ecolmodel.2014.12.004).
+---
+# References
 Hansson, S. O. (2009). "From the Casino to the Jungle". In: _Synthese_
 168.3, pp. 423-432. URL:
 [https://doi.org/10.1007/s11229-008-9444-1](https://doi.org/10.1007/s11229-008-9444-1)
 (visited on Sep. 15, 2020).
----
-# References
 
-```
-## Warning in `[[.BibEntry`(x, ind): subscript out of bounds
-```
+&lt;a name=bib-hu2020HowConductBayesian&gt;&lt;/a&gt;[Hu, D., A. M. O'Connor, et
+al.](#cite-hu2020HowConductBayesian) (2020). "How to Conduct a Bayesian
+Network Meta-Analysis". In: _Frontiers in Veterinary Science_ 7, p.
+271. URL:
+[https://www.frontiersin.org/article/10.3389/fvets.2020.00271/full](https://www.frontiersin.org/article/10.3389/fvets.2020.00271/full)
+(visited on Nov. 04, 2020).
 
 &lt;a
 name=bib-instituteofmedicine2013EnvironmentalDecisionsFace&gt;&lt;/a&gt;[Institute
@@ -467,7 +498,7 @@ uncertainty_. Chapman &amp; Hall/CRC texts in statistical science series:
 92.
 
 &lt;a name=bib-sahlin2020ThisWhatWe&gt;&lt;/a&gt;[Sahlin, U., I. Helle, et
-al.](#cite-sahlin2020ThisWhatWe) (2020b). "'This is what we don't know'
+al.](#cite-sahlin2020ThisWhatWe) (2020). "'This is what we don't know'
 â€ Treating epistemic uncertainty in Bayesian networks for risk
 assessment". In: _Integrated Environmental Assessment and Management_,
 p. ieam.4367. ISSN: 1551-3777, 1551-3793. DOI:

@@ -146,7 +146,7 @@ Voltaire 1694 - 1778
 
   - uncertainty about the model (including parameters), lack of scientific consensus, small sample sizes, bias or low quality in experimental studies, observation or measurement errors, ambiguous terms, misunderstandings
 
-- Aleatory uncertainty (from Latin *ālĕa*, dice): 
+- Aleatory uncertainty (from Latin: *ālĕa*, dice): 
   - inherent randomness in real world systems, heterogeneity, variability, between study variability, chance outcomes
 
 - Ontological uncertainty
@@ -300,38 +300,61 @@ Node state probabilities are relative frequencies that express aleatory uncertai
 .pull-left[
 A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
 
-Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions
+Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions.
 
-Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference
-<br><br><br><br>
-Variables from several BHMs can be combined into an aleatory BN
+Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference.
+
 
 .footnote[`r ct(bibf, c("@gelman2013BayesianDataAnalysis", "@kadane2011PrinciplesUncertainty"))`] 
 ]
 
---
+
+
+---
+# BHM for uncertainty analysis of a BN
+
+.pull-left[
+A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
+
+Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions.
+
+Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference.
+
+.footnote[`r ct(bibf, c("@gelman2013BayesianDataAnalysis", "@kadane2011PrinciplesUncertainty"))`] 
+
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[
+Variables from several BHMs can be combined into an aleatory BN
+]
+]
 
 .pull-right[
 ![:scale 80%](figs/borsuk_fig.jpg)
 
 .footnote[`r ct(bibf, "@borsuk2004BayesianNetworkEutrophication")`]
 ]
-
 ---
-background-image: url(figs/metamodel.png)
-background-position: right 100px bottom 70px
+background-image: url(figs/naive.png)
+background-position: right 100px bottom 150px
 background-size: 350px
 
-# Epistemic BN in meta-analysis
+# BHM for uncertainty analysis of a BN
+
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[
+BHMs can combine multiple sources of studies to inform an epistemic BN]
 
 .pull-left[
-Text  
+-Combine multiple sources of evidence using meta-analysis considering variability and error in data. 
 
-More text
+![:scale 100%](figs/clinical_BN.jpg)
+
+.footnote[`r ct(bibf, c("@hu2020HowConductBayesian", "@YET2014373", "HAMILTON201564"))`]
 ]
 
+.pull_right[
+-Consider measurement error or partial observability when building Bayes naive classifiers.
+]
 ---
-# BHM vs BN
+# BN vs BHM
 .footnote[`r ct(bibf, "@sahlin2020ThisWhatWe")`]
 
 .pull-left[
@@ -374,7 +397,7 @@ BHM for parametric inference combined with
 
 - Aleatory BNs to build integrated assessment models to assess probability of adverse events or impacts 
 
-- Epistemic BNs for probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) when the BN is informed by one or several sources of evidence
+- Epistemic BNs for probabilistic reasoning about uncertain quantities based on multiple sources of evidence
 ]
 ---
 class: left, middle
@@ -391,10 +414,10 @@ dmytro.perepolking@cec.lu.se
 ### Acknowledgments
 
 ![:scale 50%](figs/formas_logo.svg)  
-Swedish research council for sustainable development  
+Swedish research council for sustainable development
+
+
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)
-
-
 
 .tr[
 .f3.fw7[Slides:]  
