@@ -300,9 +300,9 @@ Node state probabilities are relative frequencies that express aleatory uncertai
 .pull-left[
 A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
 
-Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions.
+Hierarchical Models (HM) attribute variation to different groups and express conditional independence, e.g. random mixed effect models and empirical Bayes.
 
-Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference.
+A Bayesian HM is a joint probability distribution of parameters, variables and data.
 
 
 .footnote[`r ct(bibf, c("@gelman2013BayesianDataAnalysis", "@kadane2011PrinciplesUncertainty"))`] 
@@ -316,9 +316,9 @@ Bayesian HM express uncertainty in parameters by probability distributions and c
 .pull-left[
 A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
 
-Hierarchical Models (HM) attribute variation to different sources expressed as conditional probability distributions.
+Hierarchical Models (HM) attribute variation to different groups and express conditional independence, e.g. random mixed effect models and empirical Bayes.
 
-Bayesian HM express uncertainty in parameters by probability distributions and can integrate expert judgment and data for inference.
+A Bayesian HM is a joint probability distribution of parameters, variables and data.
 
 .footnote[`r ct(bibf, c("@gelman2013BayesianDataAnalysis", "@kadane2011PrinciplesUncertainty"))`] 
 
@@ -393,6 +393,7 @@ background-size: 500px
 # A way forward
 .pull-left[
 Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
+
 BHM for parametric inference combined with
 
 - Aleatory BNs to build integrated assessment models to assess probability of adverse events or impacts 
