@@ -41,19 +41,20 @@ background-size: 200px
 
 ```{r setup, include=FALSE}
 library(magrittr)
+library(RefManageR)
 options(htmltools.dir.version = FALSE)
 
-cp <- function(keys, ..., bib=bibf){
+cp <- function(bib, keys, ...){
   keys <- gsub("^@", "", keys)
   RefManageR::Citep(bib, keys, ...)
 }
-ct <- function(keys, ..., bib=bibf){
+ct <- function(bib, keys, ...){
   keys <- gsub("^@", "", keys)
   RefManageR::Citet(bib, keys, ...)
 }
 
-RefManageR::BibOptions(check.entries = FALSE, bib.style = "authoryear", 
-                       style = "markdown", max.names=2, dashed = TRUE)
+RefManageR::BibOptions(check.entries = FALSE, bib.style = "authoryear", max.names=2, 
+                       longnamesfirst=FALSE, style = "markdown", dashed = TRUE)
 bibf <- 'BHMnBN.bib' %>% 
   #rbbt::bbt_write_bib(overwrite = TRUE) %>% 
   RefManageR::ReadBib()
@@ -74,7 +75,7 @@ xaringanExtra::use_extra_styles(
   mute_unhighlighted_code = TRUE  #<<
 )
 
-xaringanExtra::use_logo("fig/lu-logo.png",
+xaringanExtra::use_logo("figs/lu-logo.png",
                         link_url = "https://www.cec.lu.se/")
 ```
 
@@ -161,7 +162,7 @@ background-size: 400px
 # Tuxedo fallacy
 .f3.white["Treating all decisions as if they took place under epistemic conditions analogous to gambling at the roulette table."]
 
-`r ct("@hansson2009CasinoJungle", .opts=list(hyperlink=FALSE))`
+`r ct(bibf, "@hansson2009CasinoJungle", .opts=list(hyperlink=FALSE))`
 
 ]
 
@@ -169,22 +170,22 @@ background-size: 400px
 # Communicate uncertainty
 - Communicating uncertainty to decision makers is important
 
-.bg-washed-green.b--dark-green.ba.bw1.br3.shadow-5.ph4.mt0[
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4.mt4[
 "Unless uncertainty is known a decision maker can place too much confidence in experts and face unexpected problems or a decision maker can place too little confidence in experts and miss opportunities and resources to collect information has been waisted.  
 In some situations it can be motivated to hide one’s uncertainty, but in scientific assessments honesty is the only option"  
 .tr[
-— `r ct("@fischhoff2014CommunicatingScientificUncertainty")`]
+— `r ct(bibf, "@fischhoff2014CommunicatingScientificUncertainty")`]
 ]
 
 
 --
 - Uncertainty analysis is an integral part of risk assessment
 
-`r ct("@efsa2018PrinciplesMethodsEFSA")` The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
+- `r ct(bibf, "@efsa2018PrinciplesMethodsEFSA")` The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
 
-`r ct("@sapea2019ScientificAdviceEuropean")` Scientific Advice to European Policy in a Complex World
+- `r ct(bibf, "@sapea2019ScientificAdviceEuropean")` Scientific Advice to European Policy in a Complex World
 
-`r ct("@instituteofmedicine2013EnvironmentalDecisionsFace")` Environmental decisions in the face of uncertainty
+- `r ct(bibf, "@instituteofmedicine2013EnvironmentalDecisionsFace")` Environmental decisions in the face of uncertainty
 
 ---
 # Expressing epistemic uncertainty
@@ -196,7 +197,7 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 
 - Probability
 
-.footnote[`r ct("@vanderbles2019CommunicatingUncertaintyFacts")`]
+.footnote[Reference: `r ct(bibf, "@vanderbles2019CommunicatingUncertaintyFacts")`]
 
 --
 
@@ -220,8 +221,7 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 - Judged error or risk of different biases
 
 
-.footnote[`r ct("@vanderbles2019CommunicatingUncertaintyFacts")`]
-
+.footnote[Reference: `r ct(bibf, "@vanderbles2019CommunicatingUncertaintyFacts")`]
 
 ---
 # Bayesian methods
@@ -284,7 +284,7 @@ Bayesian HM express uncertainty in parameters by probability distributions and c
 <br><br><br><br>
 Variables from several BHMs can be combined into an aleatory BN
 
-.footnote[`r ct(c("@gelman2013BayesianDataAnalysis", "@kadane1999RethinkingFoundationsStatistics"))`] 
+.footnote[`r ct(bibf, c("@gelman2013BayesianDataAnalysis", "@kadane1999RethinkingFoundationsStatistics"))`] 
 ]
 
 --
@@ -292,15 +292,19 @@ Variables from several BHMs can be combined into an aleatory BN
 .pull-right[
 ![:scale 80%](figs/borsuk_fig.jpg)
 
-.footnote[`r ct("@borsuk2004BayesianNetworkEutrophication")`]
+.footnote[`r ct(bibf, "@borsuk2004BayesianNetworkEutrophication")`]
 ]
 
 ---
+
 .pull-left[
-![:scale 80%](figs/binomialBHM.png)
+.f3.fw6[Left title]
+![:scale 100%](figs/binomialBHM.png)
 ]
+
 .pull-right[
-![:scale 100%](figs/BNtab.jpg)
+.f3.fw6[RIght title]
+![:scale 90%](figs/BN_treat.png)
 ]
 ---
 # BHM vs BN
@@ -341,9 +345,9 @@ Variables from several BHMs can be combined into an aleatory BN
 Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
 BHM for parametric inference
 
-- Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts `r cp("@borsuk2004BayesianNetworkEutrophication")`
+- Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts `r cp(bibf, "@borsuk2004BayesianNetworkEutrophication")`
 
-- Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) `r cp("@hu2020HowConductBayesian")`
+- Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) `r cp(bibf, "@hu2020HowConductBayesian")`
 
 ---
 class: left, middle
