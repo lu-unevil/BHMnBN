@@ -223,6 +223,12 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 
 .footnote[`r ct(bibf, "@vanderbles2019CommunicatingUncertaintyFacts")`]
 ---
+
+class: inverse, middle, center
+
+#B as in Bayesian
+
+---
 # Bayesian methods
 .pull-left[
 
@@ -298,12 +304,11 @@ Node state probabilities are relative frequencies that express aleatory uncertai
 # BHM for uncertainty analysis of a BN
 
 .pull-left[
-A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
+A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty in parameters for probabilistic uncertainty analysis.
 
-Hierarchical Models (HM) attribute variation to different groups and express conditional independence, e.g. random mixed effect models and empirical Bayes.
+Hierarchical Models (HM) attribute variation to different groups, e.g. random mixed effect models.
 
 A Bayesian HM is a joint probability distribution of parameters, variables and data.
-
 
 .footnote[`r ct(bibf, c("@gelman2013BayesianDataAnalysis", "@kadane2011PrinciplesUncertainty"))`] 
 ]
@@ -314,9 +319,9 @@ A Bayesian HM is a joint probability distribution of parameters, variables and d
 # BHM for uncertainty analysis of a BN
 
 .pull-left[
-A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty by probability.
+A BN can be "wrapped" into a hierarchical model and Bayesian inference can be used to quantify uncertainty in parameters for probabilistic uncertainty analysis.
 
-Hierarchical Models (HM) attribute variation to different groups and express conditional independence, e.g. random mixed effect models and empirical Bayes.
+Hierarchical Models (HM) attribute variation to different groups, e.g. random mixed effect models.
 
 A Bayesian HM is a joint probability distribution of parameters, variables and data.
 
@@ -359,7 +364,7 @@ BHMs can combine multiple sources of studies to inform an epistemic BN]
 
 .pull-left[
 .fw6[Bayesian Networks]
-1. Handle categorical, discrete and discretized continuous variables
+1. Handle categorical, discrete and discretized continuous variables. Parameters are fixed.
 
 1. Parameters can be assigned by expert judgement or case learning
 
@@ -367,7 +372,7 @@ BHMs can combine multiple sources of studies to inform an epistemic BN]
 
 .pull-right[
 .fw6[Bayesian Hierarchical Models]
-1. Handle categorical, discrete and continuous variables, parameters are continous
+1. Handle categorical, discrete and continuous variable. Parameters are continuous and uncertain.
 
 1. Parameters and variables modeled with probability distributions
 
