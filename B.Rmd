@@ -289,7 +289,7 @@ An aleatory BN is a model for aleatory uncertainty in a probabilistic risk asses
 
 Node state probabilities are relative frequencies that express aleatory uncertainty (variability).
 
-.footnote[`r ct(bibf, "@sahlin2020bn")`]
+.footnote[`r ct(bibf, "@sahlin2020ThisWhatWe")`]
 --
 .bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.
 ]
@@ -332,6 +332,7 @@ More text
 
 ---
 # BHM vs BN
+.footnote[`r ct(bibf, "@sahlin2020ThisWhatWe")`]
 
 .pull-left[
 .fw6[Bayesian Networks]
@@ -351,8 +352,6 @@ More text
 ]
 
 --
-
-<br>
 .fw6[Aleatory Bayesian Networks]
   1. Assessment variables modeled with probability distributions (variability)
   1. Bayesian updating to infer variables (parameters are fixed)
