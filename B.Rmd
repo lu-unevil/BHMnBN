@@ -123,17 +123,18 @@ Voltaire 1694 - 1778
 - Uncertainty is personal. *Someone* is uncertain
 --
 .pull-left[
-.f5.fw6[Epistemic uncertainty]  
 
 ![:scale 40%](figs/epi.gif)
 ]
 
 --
 .pull-right[
-.f5.fw6[Aleatory uncertainty]  
+
 
 ![:scale 40%](figs/ale.gif)
 ]
+<!-- .f5.fw6[Epistemic uncertainty] -->
+<!-- .f5.fw6[Aleatory uncertainty]   -->
 ---
 # Uncertainty in risk assessment
 
@@ -197,9 +198,8 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 
 - Probability
 
-.footnote[Reference: `r ct(bibf, "@vanderbles2019CommunicatingUncertaintyFacts")`]
+.footnote[`r ct(bibf, "@vanderbles2019CommunicatingUncertaintyFacts")`]
 
---
 
 ###Indirect uncertainty (strength in knowledge)
 - List of caveats
@@ -221,8 +221,25 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 - Judged error or risk of different biases
 
 
-.footnote[Reference: `r ct(bibf, "@vanderbles2019CommunicatingUncertaintyFacts")`]
+.footnote[`r ct(bibf, "@vanderbles2019CommunicatingUncertaintyFacts")`]
+---
+# Bayesian methods
+.pull-left[
 
+1. Subjective probability to quantify uncertainty
+
+1. Bayes rule for inference
+
+1. Rule for Bayes optimal decisions
+
+]
+
+.pull-right[
+
+$$ P(A|E) = \frac{P(E|A)P(A)}{P(E)} $$
+
+$$d^* = \underset{d \in D}{min} P(A|E\,\&\,d)$$
+]
 ---
 # Bayesian methods
 .pull-left[
@@ -252,7 +269,7 @@ Questions]
 - In what way are Bayesian Networks related to these three pillars of Bayesian methods?  
 
 - What is required to treat uncertainty when BNs are used for ecological risk assessment?
-
+--
 .bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[
 Uncertainty about the model structure and parameters within models is not handled by BNs by default.
 ] 
@@ -272,9 +289,11 @@ An aleatory BN is a model for aleatory uncertainty in a probabilistic risk asses
 
 Node state probabilities are relative frequencies that express aleatory uncertainty (variability).
 
-**Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.**
-
 .footnote[`r ct(bibf, "@sahlin2020bn")`]
+--
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.
+]
+
 ---
 # BHM for uncertainty analysis of a BN
 
@@ -287,7 +306,7 @@ Bayesian HM express uncertainty in parameters by probability distributions and c
 <br><br><br><br>
 Variables from several BHMs can be combined into an aleatory BN
 
-.footnote[`r ct(bibf, c("@gelman2013BayesianDataAnalysis", "@kadane1999RethinkingFoundationsStatistics"))`] 
+.footnote[`r ct(bibf, c("@gelman2013BayesianDataAnalysis", "@kadane2011PrinciplesUncertainty"))`] 
 ]
 
 --
@@ -352,11 +371,11 @@ background-size: 500px
 # A way forward
 .pull-left[
 Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
-BHM for parametric inference
+BHM for parametric inference combined with
 
-- Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts `r cp(bibf, "@borsuk2004BayesianNetworkEutrophication")`
+- Aleatory BNs to build integrated assessment models to assess probability of adverse events or impacts 
 
-- Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) `r cp(bibf, "@hu2020HowConductBayesian")`
+- Epistemic BNs for probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) when the BN is informed by one or several sources of evidence
 ]
 ---
 class: left, middle
