@@ -187,11 +187,11 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 --
 - Uncertainty analysis is an integral part of risk assessment
 
-- `r ct(bibf, "@efsa2018PrinciplesMethodsEFSA")` The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
+  - `r ct(bibf, "@efsa2018PrinciplesMethodsEFSA")` The principles and methods behind EFSA's guidance on uncertainty analysis in scientific assessment.
 
-- `r ct(bibf, "@sapea2019ScientificAdviceEuropean")` Scientific Advice to European Policy in a Complex World
+  - `r ct(bibf, "@sapea2019ScientificAdviceEuropean")` Scientific Advice to European Policy in a Complex World
 
-- `r ct(bibf, "@instituteofmedicine2013EnvironmentalDecisionsFace")` Environmental decisions in the face of uncertainty
+  - `r ct(bibf, "@instituteofmedicine2013EnvironmentalDecisionsFace")` Environmental decisions in the face of uncertainty
 
 ---
 # Expressing epistemic uncertainty
@@ -239,7 +239,8 @@ In some situations it can be motivated to hide one’s uncertainty, but in scien
 
 1. Rule for Bayes optimal decisions
 
-.bg-washed-green.b--dark-green.ba.bw1.br3.shadow-5.ph4.mt0[These can, but don’t have to be used together. ]
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph3[
+These can, but don’t have to be used together. ]
 ]
 
 .pull-right[
@@ -250,13 +251,15 @@ $$d^* = \underset{d \in D}{min} P(A|E\,\&\,d)$$
 ]
 
 --
+<br>
+.f4.fw6[
+Questions] 
 
-### Questions
-In what way are Bayesian Networks related to these three pillars of Bayesian methods?  
+- In what way are Bayesian Networks related to these three pillars of Bayesian methods?  
 
-What is required to treat uncertainty when BNs are used for ecological risk assessment?
+- What is required to treat uncertainty when BNs are used for ecological risk assessment?
 
-.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4.mt4[
+.bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[
 Uncertainty about the model structure and parameters within models is not handled by BNs by default.
 ] 
 ---
@@ -277,7 +280,7 @@ Node state probabilities are relative frequencies that express aleatory uncertai
 
 **Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.**
 
-.footnote[`r ct("@sahlin2020bn")`]
+.footnote[`r ct(bibf, "@sahlin2020bn")`]
 ---
 # BHM for uncertainty analysis of a BN
 
@@ -302,16 +305,18 @@ Variables from several BHMs can be combined into an aleatory BN
 ]
 
 ---
+background-image: url(figs/metamodel.png)
+background-position: right 100px bottom 70px
+background-size: 350px
+
+# Epistemic BN in meta-analysis
 
 .pull-left[
-.f3.fw6[Left title]
-![:scale 100%](figs/binomialBHM.png)
+Text  
+
+More text
 ]
 
-.pull-right[
-.f3.fw6[RIght title]
-![:scale 90%](figs/BN_treat.png)
-]
 ---
 # BHM vs BN
 
@@ -346,39 +351,41 @@ Variables from several BHMs can be combined into an aleatory BN
 
 
 ---
+background-image: url(figs/whynotboth.png)
+background-position: right 25px center
+background-size: 500px
 
 # A way forward
+.pull-left[
 Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
 BHM for parametric inference
 
 - Aleatory BN to build integrated assessment models to assess probability of adverse events or impacts `r cp(bibf, "@borsuk2004BayesianNetworkEutrophication")`
 
 - Epistemic BN to support the parametrisation e.g. based on multiple studies (evidence synthesis) to do probabilistic reasoning of the state of a system (effective, toxic, present, invasive etc) `r cp(bibf, "@hu2020HowConductBayesian")`
-
+]
 ---
 class: left, middle
 
 # Thanks!
 
-.f4[
+.code.f4[
 ullrika.sahlin@cec.lu.se  
 dmytro.perepolking@cec.lu.se
 ]
 <br><br>
 
-.f4.fw6[
+.f3.fw7[
 Acknowledgments]
 
-![:scale 20%](figs/formas_logo.svg)
-
+![:scale 20%](figs/formas_logo.svg)  
 Swedish research council for sustainable development  
-
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)
 
 <br><br><br>
 
 .f4[
-Slides are available at https://github.com/lu-unevil/BHMnBN
+Slides are available at https://lu-unevil.github.io/BHMnBN/B.html
 ]
 
 ---
