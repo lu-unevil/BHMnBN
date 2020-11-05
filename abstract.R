@@ -1,0 +1,6 @@
+# Abstract
+
+12 minutes or less
+
+An ecological risk assessment is about integrating sources of evidence with expert knowledge to assess severity of impacts or likelihood of adverse events. An important task in risk assessment is to evaluate the impact of limitations in knowledge on epistemic uncertainty in the assessment. The Bayesian paradigm contains several pillars: Bayes rule for inference, subjective probability to quantify uncertainty and a rule for Bayes optimal decisions. These can, but don’t have to be used together to assess risk. Depending on the nature of the risk assessment, probabilistic reasoning applies on variables (aleatory uncertainty) or on models (or parameters within models) (epistemic uncertainty). Bayesian hierarchical models can consider both aleatory and epistemic uncertainty with statistical and predictive rigor, but at the loss of computational speed as the model become more complex. In this talk, I will clarify the distinction between Bayesian networks and Bayesian hierarchical modeling, and show the usefulness and limitations of both approaches. I conclude my talk by proposing a way forward, where both Bayesian networks and Bayesian hierarchical modelling are used for ecological risk assessment. 
+
