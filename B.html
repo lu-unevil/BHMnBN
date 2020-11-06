@@ -276,26 +276,28 @@ Questions]
 Uncertainty about the model structure and parameters within models is not handled by BNs by default.
 ] 
 ---
-# Bayesian networks
-How to treat uncertainty depends on the type of network
-
-.f3.fw6[Epistemic BN]
-
-Expert-informed networks used for probabilistic reasoning in light of the evidence brought into the network. 
-
-Node state probabilities (other than nodes for data) are subjective probabilities that express epistemic uncertainty.
-
-.f3.fw6[Aleatory BN]
-
-An aleatory BN is a model for aleatory uncertainty in a probabilistic risk assessment.
-
-Node state probabilities are relative frequencies that express aleatory uncertainty (variability).
-
+# Bayesian networks 
 .footnote[&lt;a name=cite-sahlin2020ThisWhatWe&gt;&lt;/a&gt;[Sahlin Helle, et al. (2020)](https://doi.org/10.1002/ieam.4367)]
+
+1. Handle categorical, discrete and discretized continuous variables. 
+
+1. Parameters (PTs and CPTs) are fixed and can be assigned by expert judgement or case learning
+
+1. Bayesian inference to revise the network conditional on a configuration of nodes.
+
+--
+
+.fw6[Aleatory Bayesian Networks]
+  - Assessment variables modeled with probability distributions (variability)
+
+.fw6[Epistemic Bayesian Networks]
+  - State nodes are modeled with probability distributions (uncertainty)
+  
+  - Data nodes are modeled with probability distributions (likelihood)
+
 --
 .bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[Statistical models which explicitly address uncertainty can support parametric inference and uncertainty analysis in ERA.
 ]
-
 ---
 # BHM for uncertainty analysis of a BN
 
@@ -308,8 +310,6 @@ A Bayesian HM is a joint probability distribution of parameters, variables and d
 
 .footnote[&lt;a name=cite-gelman2013BayesianDataAnalysis&gt;&lt;/a&gt;&lt;a name=cite-kadane2011PrinciplesUncertainty&gt;&lt;/a&gt;[Gelman Carlin, et al. (2013)](#bib-gelman2013BayesianDataAnalysis); [Kadane (2011)](#bib-kadane2011PrinciplesUncertainty)] 
 ]
-
-
 
 ---
 # BHM for uncertainty analysis of a BN
@@ -341,7 +341,7 @@ background-size: 350px
 # BHM for uncertainty analysis of a BN
 
 .bg-light-gray.b--slate-gray.ba.bw1.br3.shadow-5.ph4[
-BHMs can combine multiple sources of studies to inform BNs]
+BHMs can combine multiple and different sources of studies to inform BNs]
 
 .pull-left[
 -Combine multiple sources of evidence using meta-analysis considering variability and error in data. 
@@ -354,37 +354,6 @@ BHMs can combine multiple sources of studies to inform BNs]
 .pull_right[
 -Consider measurement error or partial observability when building Epistemic BNs such as Bayes naive classifiers.
 ]
----
-# BN vs BHM
-.footnote[[Sahlin Helle, et al. (2020)](https://doi.org/10.1002/ieam.4367)]
-
-.pull-left[
-.fw6[Bayesian Networks]
-1. Handle categorical, discrete and discretized continuous variables. Parameters are fixed.
-
-1. Parameters can be assigned by expert judgement or case learning
-
-]
-
-.pull-right[
-.fw6[Bayesian Hierarchical Models]
-1. Handle categorical, discrete and continuous variable. Parameters are continuous and uncertain.
-
-1. Parameters and variables modeled with probability distributions
-
-1. Bayesian updating to infer parameters
-]
-
---
-.fw6[Aleatory Bayesian Networks]
-  1. Assessment variables modeled with probability distributions (variability)
-  1. Bayesian updating to infer variables (parameters are fixed)
-
-.fw6[Epistemic Bayesian Networks]
-  1. Data nodes are modeled with probability distributions (likelihood)
-  1. State nodes are modeled with probability distributions (uncertainty)
-  1. Bayesian updating to infer state nodes (parameters are fixed)
-
 
 ---
 background-image: url(figs/whynotboth.png)
@@ -393,13 +362,13 @@ background-size: 500px
 
 # A way forward
 .pull-left[
-Both Bayesian networks and Bayesian hierarchical modelling should be used for ecological risk assessment. 
+Both Bayesian networks and Bayesian hierarchical modeling should be used for ecological risk assessment. 
 
 BHM for parametric inference combined with
 
 - Aleatory BNs to build integrated assessment models to assess probability of adverse events or impacts 
 
-- Epistemic BNs for probabilistic reasoning about uncertain quantities based on multiple sources of evidence
+- Epistemic BNs for probabilistic reasoning about uncertain quantities based on multiple and different sources of evidence
 ]
 ---
 class: left, middle
@@ -422,7 +391,7 @@ Swedish research council for sustainable development
 Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan)
 
 .tr[
-.f3.fw7[Slides:]  
+.f3.fw7[Slides including references:]  
 .f1.fw1[bit.ly/BNboth]
 ]
 
