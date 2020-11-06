@@ -434,11 +434,16 @@ Slides created via the R package [**xaringan**](https://github.com/yihui/xaringa
 
 # References
 ```{r, results='asis', echo=FALSE}
-RefManageR::PrintBibliography(bibf, start = 1, end = 6)
+RefManageR::PrintBibliography(bibf, start = 1, end = 5)
 ```
 ---
 # References
 ```{r, results='asis', echo=FALSE}
-RefManageR::PrintBibliography(bibf, start = 7, end = min(12,length(bibf)))
+RefManageR::PrintBibliography(bibf, start = 6, end = min(10,length(bibf)))
 ```
 
+---
+# References
+```{r, results='asis', echo=FALSE}
+RefManageR::PrintBibliography(bibf, start = 11, end = min(13,length(bibf)))
+```
